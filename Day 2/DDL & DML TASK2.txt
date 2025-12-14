@@ -1,0 +1,102 @@
+
+                                   DDL & DML
+                                 ============
+
+
+1.Create a table named PRODUCT with PID,PNAME,CATEGORY,PRICE and insert the
+  records as below.
+
+
+     PID        PNAME	       CATEGORY	        PRICE
+    -----   -------------    --------------    --------
+      1	      LED TV	      ELECTRONICS       25000
+      2	      MOBILE	      ELECTRONICS       15000
+      3       FRIDGE          APPLIANCES	30000
+      4	    WASHING MACHINE   APPLIANCES	20000
+      5	    OFFICE CHAIR      FURNITURE	        5000
+
+ANS: SQL> INSERT INTO PRODUCT VALUES(&PID, '&PNAME', '&CATEGORY', &PRICE);
+SQL> /
+
+
+2.Write a query to display product names and categories from PRODUCT table?
+ANS: SQL> SELECT PNAME,CATEGORY FROM PRODUCT;
+
+
+3.Write a query to display product names,categories and price from
+  PRODUCT table?
+ANS:SQL> SELECT PNAME,CATEGORY,PRICE FROM PRODUCT;
+
+------------------------------------------------------------------------------------------------------
+1.Create STUDENTS table with following columns and insert the records as following
+
+     SID        SNAME         MARKS        GRADE          DOB
+   -------    ---------    ---------      --------     ----------
+      1         SURYA          82            B          31-DEC-97
+      2         KIRAN          20            F          18-SEP-96
+      3         ANUSHKA        98            A          22-APR-98
+      4         GOWTHAM        64            C          06-JAN-95
+      5         NITISH         45            D          12-MAR-96  
+
+
+
+2.Write a query to add a new column email into STUDENTS table.
+ANS: SQL> ALTER TABLE STUDENTS ADD EMAIL VARCHAR2(20);
+
+3.Write a query to increase the size of sname column to 20 in STUDENTS table
+ANS: SQL> ALTER TABLE STUDENTS MODIFY SNAME VARCHAR2(20);  
+
+
+4.Write a query to drop the grade column from STUDENTS table.
+ANS: SQL> ALTER TABLE STUDENTS DROP COLUMN GRADE;
+
+
+5.Write a query to rename the column SNAME to NAME in the 
+  STUDENTS table.
+ANS: SQL> ALTER TABLE STUDENTS RENAME COLUMN SNAME TO NAME;
+
+
+6.Write a query to completely delete the STUDENTS table along with its structure.
+ANS: SQL> DROP TABLE STUDENTS;
+
+
+7.Write a query to restore the STUDENTS table.
+ANS: SQL> FLASHBACK TABLE STUDENTS TO BEFORE  DROP;
+
+
+8.Write a query to rename the table STUDENTS to STUDENT_DETAILS.
+ANS: SQL> RENAME STUDENTS TO STUDENT_DETAILS;
+
+----------------------------------------------------------------------------------------------------
+
+1.Create EMPLOYEES table with the following columns and insert the records as given below:
+
+EID 	ENAME 		SALARY 		DESIGNATION 		DOJ
+
+
+101 	RAVI 		45000 		MANAGER 		10-JAN-18
+102 	PRIYA 		25000 		ANALYST 		05-MAR-20
+103 	SURESH 		18000 		CLERK 			15-JUL-21
+104 	MAHESH 		32000 		ACCOUNTANT 		22-FEB-19
+105 	LAKSHMI 	50000 		DIRECTOR 		30-NOV-17
+
+1. Write a query to add a new column PHONE to EMPLOYEES table.
+ANS: SQL> ALTER TABLE EMPLOYEES ADD PHONE NUMBER(12);
+
+2. Write a query to increase the size of DESIGNATION column to 25 characters.
+ANS: SQL> ALTER TABLE EMPLOYEES MODIFY DESIGNATION VARCHAR2(25);
+
+3. Write a query to drop the SALARY column from EMPLOYEES table.
+
+4. Write a query to rename the column ENAME to EMP_NAME.
+
+5. Write a query to completely delete the EMPLOYEES table along with its structure.
+
+6. Write a query to restore the EMPLOYEES table.
+
+7. Write a query to rename the table EMPLOYEES to EMP_DETAILS.
+  
+
+
+
+
