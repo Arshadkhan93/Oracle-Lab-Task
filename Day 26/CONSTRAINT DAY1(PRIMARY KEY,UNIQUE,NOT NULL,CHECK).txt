@@ -1,0 +1,180 @@
+                           CONSTRAINTS
+                         ===============
+
+                        Data integrity(To Maintaine proper data)or
+                           /      \    (To Maintaine valid data)
+                          /        \
+                        SQL        PL/SQL
+                    CONSTRAINTS   TRIGGERS    
+
+     Constraints are used to prevents or stops invalid data
+entry into our tables. Generally constraints are created on
+table columns.
+
+ Oracle having following types of constraints.
+These are
+
+1. Not null
+2. Unique
+3. Primary key
+4. Foreign key
+5. Check
+6. Default
+  
+   in database if we want to maintain proper data or valid data 
+according to client requirement then we are using SQL language
+constraints, Procedure language triggers.
+
+
+1)NOT NULL:- Not null constraint doesn't support table level.
+==========   This constraint does not accepts null values 
+             but it will accepts duplicate values.
+
+
+
+2)UNIQUE:-This constraint is created on column level, table level.
+========  This constraint doesn't accepts duplicate values 
+          but it will accepts null values.
+
+
+
+3)Primary Key:-Primary key is uniquely identifying a record in a table. 
+=============  There can be only one primary key in a table.primary key
+               doesn't accepts duplicate, null values. 
+
+
+
+5)CHECK:-Check constraint is used to define logical conditions
+=======  according to client business rules.
+
+------------------------------------------------------------------------------------------------------
+1.Create a student123 table with constraints based on the following
+  conditions.
+
+---->after creating the table insert valid, invalid records 
+     and observe the outputs.
+
+SID          does not accept nulls values and duplicate values
+
+SNAME        does not accept nulls
+
+MARKS        Marks must be between 0 and 100
+
+MAILID       Must be unique
+
+ANS :- SQL> CREATE TABLE STUDENT124
+  2     (SID NUMBER(4) PRIMARY KEY,
+  3      SNAME VARCHAR2(10) NOT NULL,
+  4      MARKS NUMBER(3) CHECK (MARKS BETWEEN 0 AND 100),
+  5      MAILID VARCHAR2(20) UNIQUE);
+ 
+------------------------------------------------------------------------------------------------------
+2.Create a emp3 table with constraints based on the following
+  conditions.
+
+---->after creating the table insert valid, invalid records 
+     and observe the outputs.
+
+SQL> CREATE TABLE EMP4
+  2  (
+  3  USERID NUMBER(4) PRIMARY KEY,
+  4  USERNAME  VARCHAR2(10) NOT NULL UNIQUE,
+  5  PWD VARCHAR2(10) CHECK(LENGTH(PWD)>=8)
+  6  );
+
+USERID       does not accept null values and duplicate values
+
+USERNAME     does not accept null values and duplicate values
+
+PWD          Password minimum 8 characters
+
+------------------------------------------------------------------------------------------------------
+3.Create the emp4 table with constraints based on the following
+  conditions.
+
+--->after creating the table insert valid, invalid records 
+     and observe the outputs.
+
+SQL> CREATE TABLE EMP5
+  2  (
+  3  EMPNO NUMBER(4) PRIMARY KEY,
+  4  ENAME VARCHAR2(10) NOT NULL,
+  5  GENDER VARCHAR2(4) CHECK(GENDER IN('M','F','m','f')),
+  6  SAL NUMBER(8,2) CHECK(SAL>=5000)
+  7  );
+
+EMPNO      should not be NULL and should not allow duplicate values
+
+ENAME      should not be NULL
+
+GENDER     Must be M or F
+
+SAL        Minimum 5000 (means 5000 or above it will accept)
+
+
+------------------------------------------------------------------------------------------------------
+4.Create the ACCOUNTS table with constraints based on the following
+  conditions.
+
+--->after creating the table insert valid, invalid records 
+     and observe the outputs.
+
+SQL> CREATE TABLE ACCOUNTS
+  2  (
+  3  ACCNO NUMBER(10) PRIMARY KEY,
+  4  ACCTYPE CHAR(1) CHECK (ACCTYPE IN('S','s','C','c'))
+  5  ,BAL NUMBER(6,2) CHECK(BAL>=1000)
+  6  );
+
+ACCNO       should not be NULL and should not allow duplicate values
+
+ACCTYPE     Must be 'S' OR 'C'
+
+BAL         Must be minimum 1000
+
+------------------------------------------------------------------------------------------------------
+5.Create table PROJECT table with constraints based on the following
+  conditions.
+
+--->after creating the table insert valid, invalid records 
+     and observe the outputs.
+
+SQL> CREATE TABLE PROJECT
+  2  (
+  3  PID NUMBER(4) PRIMARY KEY,
+  4  PNAME VARCHAR2(10) NOT NULL,
+  5  START_DATE DATE,
+  6  END_DATE DATE,
+  7  COST NUMBER(8,2) CHECK(COST>=20000),
+  8  STATUS VARCHAR2(10) CHECK(STATUS IN('ACTIVE','COMPLETED','HOLD'))
+  9  );
+
+PID              should not accept NULL values & duplicate values
+
+PNAME            should not accept nulls
+
+START_DATE
+
+END_DATE
+
+COST             Must be atleast 20000
+
+STATUS           Must be active,completed or on hold     
+
+
+
+------------------------------------------------------------------------------------------------------
+6.Create a table named test123 using table level constraints with the following conditions
+
+SNO        should not accept NULL values and duplicate values
+
+SNAME      should contain only capital letters
+
+SAL        more than 9000
+
+SQL> CREATE TABLE TEST12
+  2  (
+  3  SNO NUMBER(4) PRIMARY KEY,
+  4  SNAME VARCHAR(10) CHECK(SNAME=UPPER(SNAME)),
+  5  SAL NUMBER(8,2) CHECK (SAL>=9000)
+  6  );
